@@ -287,7 +287,8 @@ img {
 
 /* Blog Section */
 .blog-section {
-    padding: var(--spacing-xl) 0;
+    padding-top: calc(var(--spacing-xl) + 60px);
+    padding-bottom: var(--spacing-xl);
 }
 
 .section-header {
