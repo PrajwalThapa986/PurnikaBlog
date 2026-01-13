@@ -3,19 +3,22 @@
    Using HSL for easy theming
 */
 :root {
-    --primary-hue: 250;
-    --primary: hsl(var(--primary-hue), 60%, 60%);
-    --primary-dark: hsl(var(--primary-hue), 60%, 50%);
-    --primary-light: hsl(var(--primary-hue), 60%, 95%);
+    /* Nature/Eco Theme */
+    --primary-main: #4CAF50;
+    --primary-dark: #2E7D32;
+    --primary-light: #C8E6C9;
 
-    --accent-hue: 340;
-    --accent: hsl(var(--accent-hue), 80%, 65%);
+    --accent: #81C784;
 
-    --bg-body: hsl(30, 20%, 98%);
+    --bg-body: #F1F8E9;
+    /* Very light green background */
     --bg-card: #ffffff;
+    --bg-header: #1a1a1a;
 
-    --text-main: hsl(220, 20%, 20%);
-    --text-muted: hsl(220, 10%, 50%);
+    --text-main: #1B5E20;
+    /* Dark green text */
+    --text-muted: #558B2F;
+    --text-header: #ffffff;
 
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
@@ -103,27 +106,37 @@ img {
 }
 
 .btn-primary {
-    background-color: var(--primary);
+    background-color: var(--primary-main);
     color: white;
-    box-shadow: 0 4px 12px rgba(100, 100, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
 }
 
 .btn-primary:hover {
     background-color: var(--primary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(100, 100, 255, 0.4);
+    box-shadow: 0 8px 16px rgba(76, 175, 80, 0.4);
 }
 
 .btn-secondary {
     background-color: transparent;
     color: var(--text-main);
-    border: 2px solid rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(27, 94, 32, 0.2);
 }
 
 .btn-secondary:hover {
-    border-color: var(--primary);
-    color: var(--primary);
+    border-color: var(--primary-main);
+    color: var(--primary-main);
     background-color: var(--primary-light);
+}
+
+.btn-login {
+    color: var(--primary-main);
+    font-weight: 600;
+    margin-left: 1rem;
+}
+
+.btn-login:hover {
+    color: white;
 }
 
 .btn-block {
@@ -137,10 +150,10 @@ img {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--bg-header);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding: 1rem 0;
 }
 
@@ -160,6 +173,12 @@ img {
     color: var(--primary);
 }
 
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
 .main-nav ul {
     display: flex;
     gap: 2rem;
@@ -167,11 +186,14 @@ img {
 
 .main-nav a {
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .main-nav a:hover {
-    color: var(--primary);
+    color: var(--primary-main);
 }
 
 .theme-toggle {
@@ -294,15 +316,22 @@ img {
 .section-header {
     text-align: center;
     margin-bottom: var(--spacing-lg);
+    background: var(--primary-light);
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    display: inline-block;
+    width: 100%;
 }
 
 .section-header h2 {
-    font-size: 2.5rem;
-    margin-bottom: var(--spacing-xs);
+    font-size: 1.5rem;
+    color: var(--text-main);
+    margin-bottom: 0;
+    font-weight: 600;
 }
 
 .section-header p {
-    color: var(--text-muted);
+    display: none;
 }
 
 .blog-grid {
@@ -312,23 +341,23 @@ img {
 }
 
 .blog-card {
-    background: var(--bg-card);
+    background: transparent;
     border-radius: var(--radius-md);
     overflow: hidden;
-    box-shadow: var(--shadow-sm);
     transition: var(--transition);
-    border: 1px solid rgba(0, 0, 0, 0.02);
 }
 
 .blog-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-5px);
 }
 
 .card-image {
     position: relative;
-    height: 220px;
+    height: 300px;
+    /* Taller image as per reference */
     overflow: hidden;
+    border-radius: var(--radius-md);
+    margin-bottom: 1rem;
 }
 
 .card-image img {
@@ -356,7 +385,7 @@ img {
 }
 
 .card-content {
-    padding: 1.5rem;
+    padding: 0.5rem 0;
 }
 
 .card-content .date {
