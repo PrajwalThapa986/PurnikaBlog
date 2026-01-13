@@ -392,9 +392,7 @@ img {
     color: var(--primary);
 }
 
-.read-more:hover {
-    gap: 8px;
-}
+
 
 /* About Section */
 .about-section {
@@ -550,7 +548,6 @@ img {
 
 .social-links a:hover {
     color: var(--primary);
-    transform: translateY(-2px);
 }
 
 /* Mobile Responsive */
