@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Character encoding for proper text rendering -->
+    <meta charset="UTF-8">
+    <!-- Responsive viewport for mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Page title shown in browser tab -->
+    <title>The Impact of Technology | Purnika Blog</title>
+    <!-- SEO meta description -->
+    <meta name="description"
+        content="Exploring how technology has transformed our daily lives - from reading and creativity to communication and self-care.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- ========================================
+         INLINE CSS STYLES
+         ======================================== -->
+    <style>
+        /* ----------------------------------------
+           CSS VARIABLES
+           ---------------------------------------- */
+        :root {
+            /* Color palette - Tech/Modern Theme */
+            --primary: #6366f1;
+            /* Indigo - tech-inspired */
+            --primary-dark: #4f46e5;
+            --primary-light: #e0e7ff;
+            --accent: #06b6d4;
+            /* Cyan accent */
+            --accent-light: #cffafe;
+
+            /* Semantic colors */
+            --positive: #10b981;
+            /* Green for positive impacts */
+            --positive-light: #d1fae5;
+            --negative: #ef4444;
+            /* Red for negative impacts */
+            --negative-light: #fee2e2;
+
+            /* Background & text */
+            --bg-body: #f8fafc;
+            --bg-white: #ffffff;
+            --bg-dark: #0f172a;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --text-light: #94a3b8;
+
+            /* Typography */
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+
+            /* Border radius */
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-full: 9999px;
+
+            /* Shadows */
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+            /* Transitions */
+            --transition: all 0.3s ease;
+        }
+
+        /* ----------------------------------------
+           RESET & BASE STYLES
+           ---------------------------------------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.8;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-heading);
+            line-height: 1.3;
+            color: var(--text-main);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            border-radius: var(--radius-md);
+        }
+
+        /* ----------------------------------------
+           LAYOUT UTILITIES
+           ---------------------------------------- */
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        .section {
+            padding: var(--spacing-lg) 0;
+        }
+
+        /* ----------------------------------------
+           HEADER / NAVIGATION
+           ---------------------------------------- */
+        .site-header {
+            background: var(--bg-dark);
+            padding: var(--spacing-sm) 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .back-link {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        /* ----------------------------------------
+           HERO SECTION - Introduction
+           ---------------------------------------- */
+        .hero {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1e1b4b 100%);
+            color: white;
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative background grid */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: var(--spacing-sm);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ----------------------------------------
+           ARTICLE CONTENT
+           ---------------------------------------- */
+        .article-content {
+            background: var(--bg-white);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            margin-top: calc(-1 * var(--spacing-lg));
+            position: relative;
+            z-index: 2;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .meta-item svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Section headings */
+        .section-heading {
+            font-size: 1.75rem;
+            margin: var(--spacing-lg) 0 var(--spacing-sm);
+            padding-left: var(--spacing-sm);
+            border-left: 4px solid var(--primary);
+        }
+
+        .section-heading.positive {
+            border-left-color: var(--positive);
+        }
+
+        .section-heading.negative {
+            border-left-color: var(--negative);
+        }
+
+        /* Paragraphs */
+        .article-content p {
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-main);
+        }
+
+        /* Lead paragraph */
+        .lead {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            line-height: 1.9;
+        }
+
+        /* ----------------------------------------
+           IMPACT CARDS
+           ---------------------------------------- */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .impact-card {
+            background: var(--bg-body);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            border: 1px solid #e2e8f0;
+            transition: var(--transition);
+        }
+
+        .impact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .impact-card.positive {
+            border-left: 4px solid var(--positive);
+        }
+
+        .impact-card.negative {
+            border-left: 4px solid var(--negative);
+        }
+
+        .impact-card h4 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .impact-card.positive h4 {
+            color: var(--positive);
+        }
+
+        .impact-card.negative h4 {
+            color: var(--negative);
+        }
+
+        .impact-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* ----------------------------------------
+           IMAGE SECTIONS - Technology Impact Areas
+           ---------------------------------------- */
+        .tech-impact-section {
+            margin: var(--spacing-lg) 0;
+            padding: var(--spacing-md);
+            background: var(--bg-body);
+            border-radius: var(--radius-lg);
+        }
+
+        .tech-impact-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .tech-impact-header h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-impact-header p {
+            color: var(--text-muted);
+        }
+
+        /* Individual impact item */
+        .impact-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .impact-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        /* Alternate layout for even items */
+        .impact-item:nth-child(even) {
+            direction: rtl;
+        }
+
+        .impact-item:nth-child(even)>* {
+            direction: ltr;
+        }
+
+        .impact-item-image {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .impact-item-image img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .impact-item:hover .impact-item-image img {
+            transform: scale(1.05);
+        }
+
+        .impact-item-content h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+
+        .impact-item-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .impact-tag {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        /* ----------------------------------------
+           CONCLUSION SECTION
+           ---------------------------------------- */
+        .conclusion {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent-light) 100%);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            margin-top: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .conclusion h2 {
+            color: var(--primary-dark);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .conclusion p {
+            max-width: 700px;
+            margin: 0 auto var(--spacing-sm);
+            color: var(--text-main);
+        }
+
+        .conclusion-quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            margin-top: var(--spacing-md);
+            padding: var(--spacing-sm);
+            border-left: 4px solid var(--primary);
+            text-align: left;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+
+        /* ----------------------------------------
+           FOOTER
+           ---------------------------------------- */
+        .site-footer {
+            background: var(--bg-dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: var(--spacing-md) 0;
+            text-align: center;
+            margin-top: var(--spacing-xl);
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        /* ----------------------------------------
+           RESPONSIVE DESIGN
+           ---------------------------------------- */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .article-content {
+                padding: var(--spacing-md);
+            }
+
+            .section-heading {
+                font-size: 1.4rem;
+            }
+
+            /* Stack impact items vertically on mobile */
+            .impact-item {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-item:nth-child(even) {
+                direction: ltr;
+            }
+
+            .impact-item-image img {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ========================================
+         HEADER
+         ======================================== -->
+    <header class="site-header">
+        <div class="container header-content">
+            <!-- Logo -->
+            <div class="logo">Purnika<span>.</span></div>
+            <!-- Back to Home Link -->
+            <a href="index.html" class="back-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+                Back to Home
+            </a>
+        </div>
+    </header>
+
+    <!-- ========================================
+         HERO SECTION - Introduction
+         ======================================== -->
+    <section class="hero">
+        <div class="container hero-content">
+            <!-- Badge -->
+            <span class="hero-badge">Featured Article</span>
+            <!-- Main Title -->
+            <h1>The Impact of Technology on Our Daily Lives</h1>
+            <!-- Subtitle -->
+            <p class="hero-subtitle">
+                Exploring how digital innovation transforms traditional practices — from the way we read and create, to
+                how we connect and care for ourselves.
+            </p>
+        </div>
+    </section>
+
+    <!-- ========================================
+         MAIN ARTICLE CONTENT
+         ======================================== -->
+    <main class="section">
+        <div class="container">
+            <article class="article-content">
+
+                <!-- Article Meta Information -->
+                <div class="article-meta">
+                    <div class="meta-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        January 13, 2026
+                    </div>
+                    <div class="meta-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        10 min read
+                    </div>
+                    <div class="meta-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        By Purnika
+                    </div>
+                </div>
+
+                <!-- ========================================
+                     INTRODUCTION
+                     ======================================== -->
+                <p class="lead">
+                    Technology has become an inseparable part of our existence. From the moment we wake up to the alarm
+                    on our smartphones to the last scroll through social media before sleep, digital innovation
+                    permeates every aspect of modern life. But as we embrace these advancements, it's worth pausing to
+                    reflect: <strong>How has technology truly impacted the things we once did by hand, with patience,
+                        and with presence?</strong>
+                </p>
+
+                <p>
+                    In this exploration, we'll examine both the bright and shadow sides of technological progress, and
+                    then dive deep into how specific everyday activities — reading, creating art, brewing coffee,
+                    self-care rituals, social connections, home lighting, communication, cooking, and time management —
+                    have been transformed by the digital revolution.
+                </p>
+
+                <!-- ========================================
+                     POSITIVE IMPACTS OF TECHNOLOGY
+                     ======================================== -->
+                <h2 class="section-heading positive">The Positive Impact of Technology</h2>
+
+                <p>
+                    Technology has brought unprecedented benefits to humanity. It has democratized knowledge, connected
+                    distant loved ones, and made life more convenient in countless ways.
+                </p>
+
+                <div class="impact-grid">
+                    <!-- Positive Impact 1 -->
+                    <div class="impact-card positive">
+                        <h4>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            Access to Information
+                        </h4>
+                        <p>The internet has made knowledge accessible to billions. A child in a remote village can now
+                            access the same information as a student at Harvard.</p>
+                    </div>
+
+                    <!-- Positive Impact 2 -->
+                    <div class="impact-card positive">
+                        <h4>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            Global Connectivity
+                        </h4>
+                        <p>Video calls, instant messaging, and social media have eliminated geographical barriers,
+                            allowing families and friends to stay connected across continents.</p>
+                    </div>
+
+                    <!-- Positive Impact 3 -->
+                    <div class="impact-card positive">
+                        <h4>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            Healthcare Advances
+                        </h4>
+                        <p>From telemedicine to AI-powered diagnostics, technology is saving lives and making healthcare
+                            more accessible and personalized than ever before.</p>
+                    </div>
+
+                    <!-- Positive Impact 4 -->
+                    <div class="impact-card positive">
+                        <h4>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            Efficiency & Automation
+                        </h4>
+                        <p>Tasks that once took hours now take seconds. Automation has freed up human time for more
+                            creative and meaningful pursuits.</p>
+                    </div>
+                </div>
+
+                <!-- ========================================
+                     NEGATIVE IMPACTS OF TECHNOLOGY
+                     ======================================== -->
+                <h2 class="section-heading negative">The Negative Impact of Technology</h2>
+
+                <p>
+                    However, this digital revolution comes with significant trade-offs. As we gain convenience, we often
+                    lose something intangible yet precious.
+                </p>
+
+                <div class="impact-grid">
+                    <!-- Negative Impact 1 -->
+                    <div class="impact-card negative">
+                        <h4>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                            </svg>
+                            Digital Addiction
+                        </h4>
+                        <p>Screen time has skyrocketed, leading to decreased attention spans, sleep disorders, and a
+                            constant need for digital stimulation.</p>
+                    </div>
+
+                    <!-- Negative Impact 2 -->
+                    <div class="impact-card negative">
+                        <h4>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                            </svg>
+                            Loss of Human Connection
+                        </h4>
+                        <p>Paradoxically, while we're more "connected" than ever, genuine face-to-face interactions and
+                            deep relationships have diminished.</p>
+                    </div>
+
+                    <!-- Negative Impact 3 -->
+                    <div class="impact-card negative">
+                        <h4>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                            </svg>
+                            Privacy Erosion
+                        </h4>
+                        <p>Our data is constantly collected, analyzed, and sold. The concept of privacy is being
+                            redefined in ways that concern many experts.</p>
+                    </div>
+
+                    <!-- Negative Impact 4 -->
+                    <div class="impact-card negative">
+                        <h4>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                            </svg>
+                            Job Displacement
+                        </h4>
+                        <p>Automation and AI threaten traditional employment, creating uncertainty for millions of
+                            workers in various industries.</p>
+                    </div>
+                </div>
+
+                <!-- ========================================
+                     TECHNOLOGY'S IMPACT ON SPECIFIC AREAS
+                     ======================================== -->
+                <div class="tech-impact-section">
+                    <div class="tech-impact-header">
+                        <h2>Technology's Touch on Everyday Life</h2>
+                        <p>How digital innovation has transformed the things we once did by hand</p>
+                    </div>
+
+                    <!-- Impact 1: Reading & Books -->
+                    <div class="impact-item">
+                        <div class="impact-item-image">
+                            <img src="assets/book_shelf.jpeg" alt="Traditional bookshelf with books">
+                        </div>
+                        <div class="impact-item-content">
+                            <span class="impact-tag">Reading & Literature</span>
+                            <h3>From Bookshelves to E-Readers</h3>
+                            <p>
+                                The joy of running fingers across book spines and the smell of aged pages is being
+                                replaced by the convenience of carrying thousands of books in a single device. E-readers
+                                and audiobooks have made literature more accessible, but have we lost the tactile
+                                intimacy of physical reading? Libraries are transforming into digital archives, and
+                                while this democratizes access to knowledge, the ritual of browsing physical shelves
+                                becomes a nostalgic memory.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Impact 2: Art & Creativity -->
+                    <div class="impact-item">
+                        <div class="impact-item-image">
+                            <img src="assets/brush.jpeg" alt="Traditional paint brushes">
+                        </div>
+                        <div class="impact-item-content">
+                            <span class="impact-tag">Art & Creativity</span>
+                            <h3>Paintbrushes Meet Pixels</h3>
+                            <p>
+                                Digital art tools like Procreate and Photoshop have revolutionized creative expression,
+                                allowing artists to undo mistakes instantly and explore infinite color palettes. Yet,
+                                something irreplaceable exists in the unpredictability of physical paint, the texture of
+                                canvas, and the meditative process of cleaning brushes. AI art generators now create in
+                                seconds what once took artists hours, raising questions about authenticity and the
+                                future of human creativity.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Impact 3: Coffee & Rituals -->
+                    <div class="impact-item">
+                        <div class="impact-item-image">
+                            <img src="assets/coffee.jpeg" alt="Coffee cup">
+                        </div>
+                        <div class="impact-item-content">
+                            <span class="impact-tag">Daily Rituals</span>
+                            <h3>Smart Brewing Revolution</h3>
+                            <p>
+                                Your morning coffee can now be scheduled via an app, with smart machines grinding beans
+                                to precise specifications. While technology ensures consistency and convenience, the
+                                mindful ritual of manually brewing coffee — the anticipation, the aroma filling the
+                                room, the deliberate slowing down — risks becoming a lost art. The question remains:
+                                does a perfectly programmed brew taste the same as one made with human attention and
+                                care?
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Impact 4: Self-Care & Grooming -->
+                    <div class="impact-item">
+                        <div class="impact-item-image">
+                            <img src="assets/comb.jpeg" alt="Wooden comb">
+                        </div>
+                        <div class="impact-item-content">
+                            <span class="impact-tag">Personal Care</span>
+                            <h3>Traditional Grooming in a Tech Age</h3>
+                            <p>
+                                Smart hairbrushes now analyze hair health and suggest products, while apps track
+                                grooming routines. But there's growing appreciation for simple, sustainable tools like
+                                wooden combs that require no batteries, produce no data, and connect us to generations
+                                of self-care wisdom. Technology in personal care offers personalization, yet many are
+                                returning to minimalist, eco-friendly approaches that feel more human.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Impact 5: Skincare -->
+                    <div class="impact-item">
+                        <div class="impact-item-image">
+                            <img src="assets/cream.jpeg" alt="Skincare cream">
+                        </div>
+                        <div class="impact-item-content">
+                            <span class="impact-tag">Wellness</span>
+                            <h3>AI-Powered Beauty</h3>
+                            <p>
+                                Skin analysis apps can now photograph your face and recommend personalized regimens,
+                                while smart mirrors track changes over time. Technology has made skincare more
+                                scientific and targeted. However, the abundance of information can lead to
+                                overconsumption and anxiety about aging. Sometimes, the simple wisdom of applying a
+                                trusted cream with gentle hands offers more peace than any algorithm could provide.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Impact 6: Social Connections -->
+                    <div class="impact-item">
+                        <div class="impact-item-image">
+                            <img src="assets/cups.jpeg" alt="Tea cups for gathering">
+                        </div>
+                        <div class="impact-item-content">
+                            <span class="impact-tag">Social Bonds</span>
+                            <h3>Virtual Gatherings vs. Tea with Friends</h3>
+                            <p>
+                                Video calls have kept relationships alive across distances, especially during global
+                                disruptions. Yet, the essence of sitting together, sharing tea from the same pot, and
+                                experiencing comfortable silences cannot be digitally replicated. Technology connects,
+                                but the warmth of physical presence, the clinking of cups, and the spontaneity of
+                                in-person conversation remain irreplaceable aspects of human bonding.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Impact 7: Home & Lighting -->
+                    <div class="impact-item">
+                        <div class="impact-item-image">
+                            <img src="assets/lamp.jpeg" alt="Traditional lamp">
+                        </div>
+                        <div class="impact-item-content">
+                            <span class="impact-tag">Home Environment</span>
+                            <h3>When Lamps Learned to Think</h3>
+                            <p>
+                                Smart lighting systems adjust color temperature throughout the day, sync with our
+                                circadian rhythms, and respond to voice commands. This technology genuinely improves
+                                well-being and productivity. Yet, there's something magical about the soft glow of a
+                                simple lamp, the ritual of turning it on manually, and the warm ambiance that doesn't
+                                require Wi-Fi to function. Sometimes, less intelligent lighting is more soulful.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Impact 8: Communication -->
+                    <div class="impact-item">
+                        <div class="impact-item-image">
+                            <img src="assets/phone.jpeg" alt="Vintage telephone">
+                        </div>
+                        <div class="impact-item-content">
+                            <span class="impact-tag">Communication</span>
+                            <h3>From Rotary Dials to Infinite Scroll</h3>
+                            <p>
+                                The evolution from rotary phones to smartphones represents one of humanity's most
+                                dramatic technological leaps. Instant global communication is now mundane. But with
+                                constant connectivity comes constant availability, blurring boundaries between work and
+                                rest. The anticipation of receiving a letter or the intentionality of making a phone
+                                call has been replaced by notification anxiety and the pressure of immediate response.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Impact 9: Cooking -->
+                    <div class="impact-item">
+                        <div class="impact-item-image">
+                            <img src="assets/spoons.jpeg" alt="Wooden cooking spoons">
+                        </div>
+                        <div class="impact-item-content">
+                            <span class="impact-tag">Culinary Arts</span>
+                            <h3>Tech in the Kitchen</h3>
+                            <p>
+                                Smart ovens, precision cookers, and recipe apps have made gourmet cooking accessible to
+                                beginners. Yet, professional chefs and home cooks alike are rediscovering traditional
+                                tools — wooden spoons seasoned with decades of use, cast iron passed through
+                                generations. Technology optimizes cooking, but the heart of cuisine often lies in
+                                imperfect, handcrafted methods that carry stories and traditions in every stir.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Impact 10: Time Management -->
+                    <div class="impact-item">
+                        <div class="impact-item-image">
+                            <img src="assets/watch.jpeg" alt="Classic wristwatch">
+                        </div>
+                        <div class="impact-item-content">
+                            <span class="impact-tag">Productivity</span>
+                            <h3>Smartwatches and the Quantified Self</h3>
+                            <p>
+                                Modern smartwatches track steps, heart rate, sleep quality, and productivity — turning
+                                our bodies into data streams. This awareness can motivate healthier habits. However, a
+                                classic timepiece asks only one question: "What time is it?" There's freedom in wearing
+                                a watch that neither buzzes with notifications nor judges your activity level.
+                                Sometimes, unmeasured time is the most valuable kind.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========================================
+                     CONCLUSION
+                     ======================================== -->
+                <div class="conclusion">
+                    <h2>Finding Balance in the Digital Age</h2>
+                    <p>
+                        Technology is neither inherently good nor evil — it is a tool whose impact depends on how we
+                        choose to use it. The key lies not in rejecting digital innovation, but in being intentional
+                        about when to embrace it and when to step back.
+                    </p>
+                    <p>
+                        Perhaps the wisest approach is to let technology handle what it does best — efficiency,
+                        connectivity, and access — while preserving space for the analog experiences that nourish our
+                        souls: the weight of a physical book, the imperfection of a hand-painted stroke, the warmth of
+                        tea shared in person.
+                    </p>
+                    <blockquote class="conclusion-quote">
+                        "The real question is not whether machines think, but whether humans do. In our rush to embrace
+                        technology, let us not forget what makes us human: presence, connection, and the beauty of
+                        imperfection."
+                    </blockquote>
+                </div>
+
+            </article>
+        </div>
+    </main>
+
+    <!-- ========================================
+         FOOTER
+         ======================================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-logo">Purnika<span>.</span></div>
+            <p>&copy; 2026 Purnika. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
